@@ -72,7 +72,9 @@ class _MethodChannelPageState extends State<MethodChannelPage> {
                 children: [
                   _ItemCard(
                     title: 'Battery Level',
-                    trailing: Text('${info!.batteryLevel} %'),
+                    trailing: info!.batteryLevel == -1
+                        ? Text('Not available')
+                        : Text('${info!.batteryLevel} %'),
                   ),
                   _ItemCard(
                     title: 'Device Model',
@@ -94,33 +96,44 @@ class _MethodChannelPageState extends State<MethodChannelPage> {
                   ),
                   SizedBox(
                     height: 60,
-                    child: PlatformViewLink(
-                      viewType: viewType,
-                      surfaceFactory: (context, controller) {
-                        return AndroidViewSurface(
-                          controller: controller as AndroidViewController,
-                          gestureRecognizers:
-                              const <Factory<OneSequenceGestureRecognizer>>{},
-                          hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-                        );
-                      },
-                      onCreatePlatformView: (params) {
-                        return PlatformViewsService.initSurfaceAndroidView(
-                            id: params.id,
+                    child: defaultTargetPlatform == TargetPlatform.iOS
+                        ? UiKitView(
                             viewType: viewType,
                             layoutDirection: TextDirection.ltr,
                             creationParams: creationParams,
                             creationParamsCodec: const StandardMessageCodec(),
-                            onFocus: () {
-                              params.onFocusChanged(true);
+                          )
+                        : PlatformViewLink(
+                            viewType: viewType,
+                            surfaceFactory: (context, controller) {
+                              return AndroidViewSurface(
+                                controller: controller as AndroidViewController,
+                                gestureRecognizers:
+                                    const <
+                                      Factory<OneSequenceGestureRecognizer>
+                                    >{},
+                                hitTestBehavior:
+                                    PlatformViewHitTestBehavior.opaque,
+                              );
                             },
-                          )
-                          ..addOnPlatformViewCreatedListener(
-                            params.onPlatformViewCreated,
-                          )
-                          ..create();
-                      },
-                    ),
+                            onCreatePlatformView: (params) {
+                              return PlatformViewsService.initSurfaceAndroidView(
+                                  id: params.id,
+                                  viewType: viewType,
+                                  layoutDirection: TextDirection.ltr,
+                                  creationParams: creationParams,
+                                  creationParamsCodec:
+                                      const StandardMessageCodec(),
+                                  onFocus: () {
+                                    params.onFocusChanged(true);
+                                  },
+                                )
+                                ..addOnPlatformViewCreatedListener(
+                                  params.onPlatformViewCreated,
+                                )
+                                ..create();
+                            },
+                          ),
                   ),
                 ],
               ),

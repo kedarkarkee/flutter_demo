@@ -79,7 +79,7 @@ class MainActivity : FlutterActivity() {
             val date = Date(currentTimeMillis)
 
             val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
-            formatter.timeZone = TimeZone.getTimeZone("UTC")
+            formatter.timeZone = TimeZone.getTimeZone("Asia/Kathmandu")
 
             val formattedTime = formatter.format(date)
             return formattedTime + "Z"
