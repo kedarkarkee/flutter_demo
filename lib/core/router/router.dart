@@ -1,7 +1,7 @@
 import 'package:demo/features/dashboard/presentation/dashboard.dart';
 import 'package:demo/features/form/presentation/form_page.dart';
 import 'package:demo/features/method_channel/presentation/method_channel.dart';
-import 'package:demo/features/product/presentation/pages/product.dart';
+import 'package:demo/features/product/presentation/pages/product_page.dart';
 import 'package:demo/features/product/presentation/pages/product_detail.dart';
 import 'package:demo/features/todo/presentation/todo_page.dart';
 import 'package:flutter/material.dart';

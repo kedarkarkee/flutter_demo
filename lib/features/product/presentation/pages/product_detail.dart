@@ -7,7 +7,11 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Product Detail Page')),
-      body: Center(child: Text('This is a product detail page')),
+      body: Center(
+        child: Text(
+          'This is a product detail page. Used just to test stateful shell navigation',
+        ),
+      ),
     );
   }
 }

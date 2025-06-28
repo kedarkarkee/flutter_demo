@@ -30,5 +30,10 @@ class AppDatabase {
             name TEXT NOT NULL
           )
           ''');
+    await db.execute('''
+          CREATE TABLE fav_products (
+            id INTEGER PRIMARY KEY
+          )
+          ''');
   }
 }
