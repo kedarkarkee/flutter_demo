@@ -1,6 +1,6 @@
 import 'package:demo/core/logger/logger.dart';
-import 'package:demo/core/native/native_api.dart';
 import 'package:demo/features/method_channel/data/entity/system_information.dart';
+import 'package:demo/features/method_channel/domain/platform_channel.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
