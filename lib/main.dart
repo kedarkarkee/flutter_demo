@@ -2,8 +2,9 @@ import 'package:demo/core/locator/locator.dart';
 import 'package:demo/core/router/router.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  registerModules();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await registerModules();
   runApp(const MyApp());
 }
 
